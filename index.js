@@ -79,9 +79,9 @@ app.put('/users/:email', (req, res) => {
 })
 
 // Delete a user :
-app.delete('/users',(req,res) => {
-    const userData = req.body.email
-    connection.query(`DELETE FROM user WHERE email=?`,userData, (err,results) => {
+app.delete('/users/:id',(req,res) => {
+    const userData = req.params.id
+    connection.query(`DELETE FROM user WHERE iduser=?`,userData, (err,results) => {
         if (err) {
             res.send('erreur lors de la modification des données')
         } else {
