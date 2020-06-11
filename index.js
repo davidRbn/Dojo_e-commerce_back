@@ -141,6 +141,16 @@ app.get('/products/:category', (req,res) => {
     })
 })
 
+app.get('/products/category/list', (req,res) => {
+    connection.query(`SELECT DISTINCT category FROM product`,(err, results) => {
+        if (err) {
+            res.send(`erreur durant l'affichage des produits`)
+        } else {
+            res.send(results)
+        }
+    })
+})
+
 
 app.listen(port, (err) => {
     if (err) {
